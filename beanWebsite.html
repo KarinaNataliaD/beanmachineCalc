@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bean Machine Cafe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="TheBeanMachine-GTA4-logo.png" alt="Bean Machine Logo" width="150">
+    
+    <div class="container">
+        <h1>Welcome to Bean Machine Cafe</h1>
+        
+        <div class="menu">
+            <h2>Menu</h2>
+            
+            <h3>Food ($200 each)</h3>
+            <ul>
+                <li data-price="200">Salad</li>
+                <li data-price="200">Coconut Cream Pie</li>
+                <li data-price="200">Cinnamon Roll</li>
+                <li data-price="200">Glory Holes</li>
+                <li data-price="200">Millionaire Shortbread</li>
+                <li data-price="200">Carrot Cake</li>
+                <li data-price="200">Chocolate Muffin</li>
+            </ul>
+            
+            <h3>Coffee ($300 each)</h3>
+            <ul>
+                <li data-price="300">The Bean Machine</li>
+                <li data-price="300">Iced Coffee</li>
+                <li data-price="300">Espresso</li>
+                <li data-price="300">Cinnamon Latte</li>
+            </ul>
+            
+            <h3>Smoothies ($500 each)</h3>
+            <ul>
+                <li data-price="500">Coconut Smoothie</li>
+                <li data-price="500">Orange Smoothie</li>
+            </ul>
+            
+            <h3>Millionaire Bundle ($4500)</h3>
+            <ul>
+                <li data-price="4500">10 Coffees & 10 Shortbreads</li>
+            </ul>
+        </div>
+        
+        <hr>
+        
+        <h2>Order Calculator</h2>
+        <p class="total" id="total">Total: $0</p>
+        <button onclick="applyDiscount()">Apply 25% Off</button>
+    </div>
+
+    <script>
+        let total = 0;
+        const totalDisplay = document.getElementById("total");
+
+        // Add event listeners to menu items
+        document.querySelectorAll(".menu ul li").forEach(item => {
+            item.addEventListener("click", () => {
+                const price = parseInt(item.getAttribute("data-price"));
+                total += price;
+                totalDisplay.innerText = `Total: $${total}`;
+            });
+        });
+
+        function applyDiscount() {
+            let discountedTotal = total * 0.75;
+            totalDisplay.innerText = `Total: $${discountedTotal.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
